@@ -1,0 +1,10 @@
+CREATE DATABASE Oxigeno DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+USE Oxigeno;
+
+CREATE TABLE MesureRegisters (
+   id INT NOT NULL AUTO_INCREMENT,
+   mesure FLOAT NULL,
+   moment DATETIME NULL,
+   PRIMARY KEY (id)
+);
