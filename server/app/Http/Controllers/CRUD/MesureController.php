@@ -51,6 +51,27 @@ class MesureController extends Controller
        return response()->json($mesure,200);
     }
 
+    function register(Request $data)
+    {
+       try{
+          DB::beginTransaction();
+          $mesure = new Mesure();
+          $lastMesure = Mesure::orderBy('id')->get()->last();
+          if($lastMesure) {
+             $mesure->id = $lastMesure->id + 1;
+          } else {
+             $mesure->id = 1;
+          }
+          $mesure->sensor_value = $data['sensor_value'];
+          $mesure->moment = date("Y-m-d H:i:s");
+          $mesure->save();
+          DB::commit();
+       } catch (Exception $e) {
+          return response()->json($e,400);
+       }
+       return response()->json($mesure,200);
+    }
+
     function put(Request $data)
     {
        try{
