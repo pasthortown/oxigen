@@ -1,0 +1,10 @@
+<div style="text-align:center">
+  <h1>
+    SENSOR DE OXÍGENO
+  </h1>
+  <button (click)="refresh()">Actualizar</button>
+</div>
+<div style="margin:auto; width: 50%; margin-top: 50px;" *ngIf="listo">
+  <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType"></canvas>
+</div>
+
